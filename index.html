@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Investment Assistant</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <h1>💼 Investment Assistant</h1>
+        <p class="subtitle">Your smart financial companion</p>
+      </header>
+
+      <main class="app-main">
+        <!-- Portfolio Summary -->
+        <section class="card" id="portfolio-summary">
+          <h2>Portfolio Summary</h2>
+          <div class="summary-grid">
+            <div class="summary-item">
+              <span class="label">Total Value</span>
+              <span class="value" id="total-value">$0.00</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Total Gain/Loss</span>
+              <span class="value" id="total-gain-loss">$0.00</span>
+            </div>
+            <div class="summary-item">
+              <span class="label">Return %</span>
+              <span class="value" id="return-pct">0.00%</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Add Investment -->
+        <section class="card" id="add-investment">
+          <h2>Add Investment</h2>
+          <form id="investment-form">
+            <div class="form-group">
+              <label for="ticker">Symbol / Ticker</label>
+              <input type="text" id="ticker" placeholder="e.g. AAPL" maxlength="10" required />
+            </div>
+            <div class="form-group">
+              <label for="shares">Shares</label>
+              <input type="number" id="shares" placeholder="e.g. 10" min="0.0001" step="any" required />
+            </div>
+            <div class="form-group">
+              <label for="buy-price">Buy Price ($)</label>
+              <input type="number" id="buy-price" placeholder="e.g. 150.00" min="0.0001" step="any" required />
+            </div>
+            <div class="form-group">
+              <label for="current-price">Current Price ($)</label>
+              <input type="number" id="current-price" placeholder="e.g. 175.00" min="0.0001" step="any" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add to Portfolio</button>
+          </form>
+        </section>
+
+        <!-- Holdings -->
+        <section class="card" id="holdings-section">
+          <h2>My Holdings</h2>
+          <div id="holdings-list">
+            <p class="empty-state">No investments yet. Add your first one above!</p>
+          </div>
+        </section>
+
+        <!-- Returns Calculator -->
+        <section class="card" id="calculator-section">
+          <h2>🧮 Returns Calculator</h2>
+          <div class="form-group">
+            <label for="calc-principal">Principal Amount ($)</label>
+            <input type="number" id="calc-principal" placeholder="e.g. 10000" min="1" step="any" />
+          </div>
+          <div class="form-group">
+            <label for="calc-rate">Annual Rate (%)</label>
+            <input type="number" id="calc-rate" placeholder="e.g. 8" min="0.01" step="any" />
+          </div>
+          <div class="form-group">
+            <label for="calc-years">Years</label>
+            <input type="number" id="calc-years" placeholder="e.g. 10" min="1" step="1" />
+          </div>
+          <button class="btn btn-secondary" id="calc-btn">Calculate</button>
+          <div id="calc-result" class="calc-result hidden"></div>
+        </section>
+
+        <!-- Tips -->
+        <section class="card" id="tips-section">
+          <h2>💡 Investment Tips</h2>
+          <ul class="tips-list">
+            <li>Diversify your portfolio to reduce risk.</li>
+            <li>Invest regularly through dollar-cost averaging.</li>
+            <li>Keep an emergency fund before investing.</li>
+            <li>Reinvest dividends to compound your returns.</li>
+            <li>Think long-term — avoid panic selling.</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>Investment Assistant &copy; 2024 | For informational purposes only</p>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
