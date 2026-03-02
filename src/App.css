@@ -1,0 +1,207 @@
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  padding: 24px 20px 16px;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #bfdbfe;
+  margin-top: 4px;
+}
+
+.nav {
+  display: flex;
+  background: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.nav-btn {
+  flex: 1;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-btn.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.portfolio-summary {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.portfolio-summary h2,
+.investments h2,
+.recommendations h2 {
+  font-size: 1rem;
+  color: #94a3b8;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.total-value {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.total-value .label {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.total-value .value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.change.positive {
+  color: #22c55e;
+  font-size: 0.9rem;
+}
+
+.change.negative {
+  color: #ef4444;
+  font-size: 0.9rem;
+}
+
+.investment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.investment-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.category {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.card-amount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.card-change.positive {
+  color: #22c55e;
+  font-size: 0.85rem;
+}
+
+.card-change.negative {
+  color: #ef4444;
+  font-size: 0.85rem;
+}
+
+.recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recommendation-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.rec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+
+.rec-header h3 {
+  font-size: 0.95rem;
+  color: #f1f5f9;
+}
+
+.risk-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.risk-low {
+  background: #166534;
+  color: #bbf7d0;
+}
+
+.risk-medium {
+  background: #92400e;
+  color: #fde68a;
+}
+
+.risk-high {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+.recommendation-card p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px;
+  font-size: 0.75rem;
+  color: #475569;
+  background: #1e293b;
+  border-top: 1px solid #334155;
+}
