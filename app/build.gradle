@@ -1,0 +1,81 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.investmentassistant'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.investmentassistant"
+        // Android 7.0+ is required for the security APIs used in this app.
+        // Covers ~95% of active Android devices as of 2024.
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            // Read signing credentials from gradle.properties (never committed to git)
+            // Falls back gracefully when properties are not defined (e.g. debug/CI without secrets)
+            storeFile project.hasProperty('RELEASE_STORE_FILE')
+                    ? file(RELEASE_STORE_FILE) : null
+            storePassword project.hasProperty('RELEASE_STORE_PASSWORD')
+                    ? RELEASE_STORE_PASSWORD : ""
+            keyAlias project.hasProperty('RELEASE_KEY_ALIAS')
+                    ? RELEASE_KEY_ALIAS : ""
+            keyPassword project.hasProperty('RELEASE_KEY_PASSWORD')
+                    ? RELEASE_KEY_PASSWORD : ""
+        }
+    }
+
+    buildTypes {
+        release {
+            // Sign the release build with the release signing config when credentials are present
+            signingConfig signingConfigs.release.storeFile != null
+                    ? signingConfigs.release : null
+
+            // Enable code shrinking, obfuscation and optimisation via R8
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // Debug builds use the default Android debug keystore automatically
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+
+    // Produce an Android App Bundle (AAB) for Play Store uploads
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

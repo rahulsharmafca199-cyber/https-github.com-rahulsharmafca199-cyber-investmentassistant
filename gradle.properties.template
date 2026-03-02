@@ -1,0 +1,30 @@
+# gradle.properties.template
+#
+# Copy this file to gradle.properties and fill in your own values.
+# gradle.properties is listed in .gitignore and must NEVER be committed to version control.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# Android release signing credentials
+# ─────────────────────────────────────────────────────────────────────────────
+#
+# RELEASE_STORE_FILE   – Path to the keystore file (absolute or relative to the
+#                        project root). Example: ../keystores/release.jks
+# RELEASE_STORE_PASSWORD – Password you chose when creating the keystore.
+# RELEASE_KEY_ALIAS    – Alias you gave the key inside the keystore.
+# RELEASE_KEY_PASSWORD – Password for the individual key (may equal store password).
+#
+# See KEYSTORE_SETUP.md for step-by-step instructions.
+#
+RELEASE_STORE_FILE=../keystores/investment-assistant-release.jks
+RELEASE_STORE_PASSWORD=your_keystore_password_here
+RELEASE_KEY_ALIAS=investment-assistant
+RELEASE_KEY_PASSWORD=your_key_password_here
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Gradle performance settings (safe to commit, already included here for
+# convenience – copy them to your gradle.properties as well)
+# ─────────────────────────────────────────────────────────────────────────────
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+org.gradle.parallel=true
+org.gradle.caching=true
+android.useAndroidX=true
