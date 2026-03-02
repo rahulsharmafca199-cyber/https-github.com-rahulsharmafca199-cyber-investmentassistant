@@ -1,0 +1,93 @@
+import java.util.Properties
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+// ---------------------------------------------------------------------------
+// Signing configuration
+//
+// For LOCAL BUILDS place a file named "keystore.properties" in the project
+// root (same directory as this build.gradle).  See "keystore.properties.template"
+// for the required format.  That filename is in .gitignore so secrets are
+// never committed.
+//
+// For CI/CD (GitHub Actions) the workflow reads the four values from
+// repository secrets and passes them as environment variables, which the
+// block below picks up as a fallback.
+// ---------------------------------------------------------------------------
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def prop = { String key ->
+    keystoreProperties.getProperty(key) ?: System.getenv(key) ?: ""
+}
+
+android {
+    namespace 'com.investmentiq.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.investmentiq.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    // -----------------------------------------------------------------------
+    // Release signing — credentials come from keystore.properties (local)
+    // or environment variables (CI).
+    // -----------------------------------------------------------------------
+    signingConfigs {
+        release {
+            def sf = prop("storeFile")
+            storeFile = sf ? rootProject.file(sf) : null
+            storePassword = prop("storePassword")
+            keyAlias = prop("keyAlias")
+            keyPassword = prop("keyPassword")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Apply release signing only when all credentials are present
+            if (prop("storeFile") && prop("storePassword") && prop("keyAlias") && prop("keyPassword")) {
+                signingConfig signingConfigs.release
+            }
+        }
+        debug {
+            applicationIdSuffix ".debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
