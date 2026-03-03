@@ -1,0 +1,22 @@
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Keystore files and signing credentials - NEVER commit these
+keystore.properties
+*.jks
+*.keystore
+release-keystore.jks
+
+# Build outputs
+app/build/
+
+# Gradle wrapper jar (optional - keep if you want to avoid requiring Gradle installed)
+# gradle/wrapper/gradle-wrapper.jar
