@@ -34,7 +34,7 @@ To upload a signed AAB to the Google Play Store, you **must** configure app sign
 
 ### Step 1: Generate a Keystore
 
-Run this command once and keep your keystore file safe:
+Run this command once and keep your keystore file safe. **Replace the placeholder values** in the `-dname` field with your actual details:
 
 ```bash
 keytool -genkey -v \
@@ -43,8 +43,10 @@ keytool -genkey -v \
   -keyalg RSA \
   -keysize 2048 \
   -validity 10000 \
-  -dname "CN=Investment Assistant, OU=Mobile, O=YourOrg, L=City, S=State, C=IN"
+  -dname "CN=Your Name, OU=Mobile, O=Your Organization, L=Your City, S=Your State, C=IN"
 ```
+
+> **Note:** Replace `CN`, `OU`, `O`, `L`, `S`, and `C` with your actual name, unit, organization, city, state, and country code.
 
 ### Step 2: Encode the Keystore as Base64
 
