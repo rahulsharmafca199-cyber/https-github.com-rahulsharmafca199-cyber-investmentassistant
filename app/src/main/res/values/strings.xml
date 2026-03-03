@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Investment Assistant</string>
+    <string name="calculator_title">Compound Interest Calculator</string>
+    <string name="hint_principal">Principal Amount (₹)</string>
+    <string name="hint_rate">Annual Interest Rate (%)</string>
+    <string name="hint_years">Investment Duration (Years)</string>
+    <string name="btn_calculate">Calculate Returns</string>
+    <string name="btn_clear">Clear</string>
+</resources>
