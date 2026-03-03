@@ -1,0 +1,10 @@
+# Keystore files – never commit these
+*.keystore
+*.jks
+keystore.txt
+
+# Android build outputs
+.gradle/
+build/
+app/build/
+local.properties
